@@ -1,6 +1,0 @@
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\_Project RimFactory\Assemblies\RLInterface.dll
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\_Project RimFactory\Source\RLInterface\obj\Debug\RLInterface.dll
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\_Project RimFactory\Source\RLInterface\obj\Debug\RLInterface.csprojResolveAssemblyReference.cache
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\[SS] RimLua\Assemblies\RLInterface.dll
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\[SS] RimLua\Source\RLInterface\obj\Debug\RLInterface.csprojResolveAssemblyReference.cache
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\[SS] RimLua\Source\RLInterface\obj\Debug\RLInterface.dll
