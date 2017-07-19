@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RL>
+  <ThingDef ParentName="BuildingBase">
+    <defName>LuaProgrammableNode</defName>
+    <label>logic node</label>
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Ship/ShipComputerCore</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <researchPrerequisites><li>ShipComputerCore</li></researchPrerequisites>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <blockLight>true</blockLight>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <WorkToBuild>16000</WorkToBuild>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <description>They say that a skilled enough programmer and an army of computers can take on the entire world. Well, here's the computer.</description>
+    <size>(1,1)</size>
+    <designationCategory>Ship</designationCategory>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTransmitter</compClass>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="RimLua.CompProperties_Lua" />
+    </comps>
+    <inspectorTabs>
+      <li>RimLua.ITab_Programmable</li>
+	  <li>RimLua.ITab_Out</li>
+    </inspectorTabs>
+    <building>
+      <shipPart>true</shipPart>
+      <ignoreNeedsPower>true</ignoreNeedsPower>
+    </building>
+    <costList>
+      <Steel>600</Steel>
+      <Component>16</Component>
+      <AIPersonaCore>1</AIPersonaCore>
+    </costList>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <staticSunShadowHeight>1.0</staticSunShadowHeight>
+    <designationHotkey>Misc3</designationHotkey>
+  </ThingDef>
+</RL>

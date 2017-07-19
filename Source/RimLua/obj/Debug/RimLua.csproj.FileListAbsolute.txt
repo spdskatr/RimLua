@@ -1,0 +1,9 @@
+D:\TUNAN\Backups\EverythingElse\RimWorld\Mods\_Project RimFactory\Assemblies\RimLua.dll
+D:\TUNAN\Backups\EverythingElse\RimWorld\Mods\_Project RimFactory\Source\RimLua\obj\Debug\RimLua.csprojResolveAssemblyReference.cache
+D:\TUNAN\Backups\EverythingElse\RimWorld\Mods\_Project RimFactory\Source\RimLua\obj\Debug\RimLua.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\_Project RimFactory\Assemblies\RimLua.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\_Project RimFactory\Source\RimLua\obj\Debug\RimLua.csprojResolveAssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\_Project RimFactory\Source\RimLua\obj\Debug\RimLua.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\[SS] RimLua\Assemblies\RimLua.dll
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\[SS] RimLua\Source\RimLua\obj\Debug\RimLua.csprojResolveAssemblyReference.cache
+C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\[SS] RimLua\Source\RimLua\obj\Debug\RimLua.dll
