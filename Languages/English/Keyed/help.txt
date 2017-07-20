@@ -9,7 +9,7 @@ The code you enter is actually only fed through the interpreter once - when you 
 
 <b>tick()</b>
 
-The tick function is a function every node has. It is executed every time the game ticks. This may seem fast, but you can use some special code to control how fast it ticks (see General.TicksGame)
+The tick function is a function every node has. It is executed every time the game ticks. This may seem fast, but you can use some special code to control how fast it ticks (see General:TicksGame)
 
 <b>button_x()</b> (where x is a number from 1 to 9 inclusive)
 
@@ -24,19 +24,19 @@ Each section is a "module", with related commands packed together in each module
 
 <b><size=18>Module: General</size></b>
 
-<b>General.Message("message")</b>
+<b>General:Message("message")</b>
 Creates a message in the top-left corner of the screen, with a specified string. The variants change the message sound.
-<i>Variants: General.MessageGood, General.MessageBad, General.MessageSilent</i>
+<i>Variants: General:MessageGood, General:MessageBad, General:MessageSilent</i>
 
-<b>General.Letter("letter label", "letter message")</b>
+<b>General:Letter("letter label", "letter message")</b>
 Sends a blue letter to the letter stack on the right. The variants change the color of the letter.
-<i>Variants: General.LetterBad, General.LetterVeryBad</i>
+<i>Variants: General:LetterBad, General:LetterVeryBad, General:LetterCustom("letter label", "letter message", "LetterDef")</i>
 
-<b>General.DebugMessage("message")</b>
+<b>General:DebugMessage("message")</b>
 Sends a debug message to RimWorld's in-built debug log. The variants allow you to send a warning, or an error.
-<i>Variants: General.DebugWarning, General.DebugError</i>
+<i>Variants: General:DebugWarning, General:DebugError</i>
 
-<b>General.TicksGame</b>
+<b>General.TicksGame</b> (It's the . notation, remember)
 This tells the player how many ticks have passed since the game started. It's useful for keeping track of time. However, the game uses TicksAbs to keep track of the date.
 
 TicksAbs is the absolute amount of ticks. It is used by the game to keep track of the time and date.
@@ -45,7 +45,7 @@ Example:
 
 function tick()
   if General.TicksGame % 60 == 0 then
-    General.MessageSilent("Hi!")
+    General:MessageSilent("Hi!")
   end
 end
 
@@ -55,7 +55,7 @@ The above example will display a silent message "Hi!" every second (playing at 1
 1 in-game hour: 2500 ticks
 1 in-game day: 60 000 ticks
 
-<b>General.DialogBox("message")</b>
+<b>General:DialogBox("message")</b>
 Opens a dialog box with the displayed text.
 
 <b><size=18>Module: Location</size></b>
@@ -65,4 +65,5 @@ Opens a dialog box with the displayed text.
 
 
 
-System.IO.File.ReadAllText("C:/Program Files (x86)/Steam/steamapps/common/RimWorld/Mods/_Project RimFactory/Languages/English/Keyed/help.txt").Replace("<", "&lt;").Replace(">", "&gt;")
+
+System.IO.File.ReadAllText("C:/Program Files (x86)/Steam/steamapps/common/RimWorld/Mods/[SS] RimLua/Languages/English/Keyed/help.txt").Replace("<", "&lt;").Replace(">", "&gt;")

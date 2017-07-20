@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using Verse;
+using RimLua.Terminal;
+using System.Reflection;
 
 namespace RimLua
 {
@@ -94,12 +96,24 @@ namespace RimLua
         {
             interpreter = LuaUtil.CreateInstance(Props.additionalAssemblyReferences);
             interpreter["parent"] = parent;
+            foreach (var type in GetTypesToInstantiate())
+            {
+                interpreter[type.Name] = Activator.CreateInstance(type, this);
+            }
         }
+
+        protected virtual IEnumerable<Type> GetTypesToInstantiate()
+        {
+            return from t in typeof(TerminalModule).AllSubclassesNonAbstract()
+                        where t.GetConstructor(new Type[] { typeof(CompLua) }) != null
+                        select t;
+        }
+
         public Lua interpreter;
         public virtual void UpdateCode()
         {
             RefreshInterpreter();
-            interpreter.DoStringErrorHandled(parent, "position = Location.PositionOfThing(parent)");
+            interpreter["position"] = parent.Position;
             interpreter["mapIndex"] = parent.Map.Index;
             interpreter.DoString(StdoutString + " = 'RimLua :: Running on '.._VERSION..'\\n'");
             interpreter.DoString(string.Format("function print(...) for k, v in ipairs({{...}}) do {0} = {0} .. v .. '\\t' end {0} = {0} .. '\\n' end", StdoutString));
@@ -109,10 +123,6 @@ namespace RimLua
         public virtual void PostUpdateCode()
         {
             tickFunction = interpreter["tick"] as LuaFunction;
-            if (tickFunction != null)
-            {
-                Log.Warning("Found tick function.");
-            }
         }
         public override void CompTick()
         {
@@ -140,7 +150,7 @@ namespace RimLua
             for (int i = 1; i < 10; i++)
             {
                 var str = "button_" + i;
-                if (interpreter[str] != null && interpreter[str] is LuaFunction)
+                if (interpreter[str] != null && interpreter[str] is LuaFunction func)
                 {
                     KeyBindingDef hKey;
                     switch (i)
@@ -178,7 +188,7 @@ namespace RimLua
                     }
                     yield return new Command_Action()
                     {
-                        action = () => interpreter.DoStringErrorHandled(parent, str + "()"),
+                        action = () => func.Call(),
                         defaultLabel = "LuaButton".Translate(i),
                         defaultDesc = "LuaButton_Desc".Translate(str),
                         icon = ContentFinder<Texture2D>.Get("Things/Mote/ColonistAttacking"),

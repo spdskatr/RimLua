@@ -57,14 +57,19 @@ namespace RimLua
             }
             catch (LuaScriptException ex)
             {
-                var label = "LuaError".Translate();
-        var abs = Find.TickManager.TicksAbs;
-                if (lastLetterReceivedTick + 240 < abs  //So it doesnt spam the letterstack
-                    || lastLetterReceivedTick > abs) //So when the game reloads with a different ticksabs it can get back up again
-                {
-                    Find.LetterStack.ReceiveLetter(label, "LuaErrorContent".Translate(lookTarget.Cell, ex.Message), LetterDefOf.BadNonUrgent, lookTarget);
-                    lastLetterReceivedTick = abs;
-                }
+                ThrowLuaScriptError(lookTarget, ex.Message);
+            }
+        }
+
+        public static void ThrowLuaScriptError(GlobalTargetInfo lookTarget, string message)
+        {
+            var label = "LuaError".Translate();
+            var abs = Find.TickManager.TicksAbs;
+            if (lastLetterReceivedTick + 240 < abs  //So it doesnt spam the letterstack
+                || lastLetterReceivedTick > abs) //So when the game reloads with a different ticksabs it can get back up again
+            {
+                Find.LetterStack.ReceiveLetter(label, "LuaErrorContent".Translate(lookTarget.Cell, message), LetterDefOf.BadNonUrgent, lookTarget);
+                lastLetterReceivedTick = abs;
             }
         }
     }
